@@ -15,9 +15,14 @@
                     <a class="nav-link" href="#">Personal</a>
                 </li>
             </ul>
-
+            {% if user.is_authenticated %}
+            <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+            <a class="btn btn-lg btn-primary" href="{% url 'Logout' %}" role="button">登出</a>
+            {% else %}
             <a class="btn btn-primary me-4" href="{% url 'Register' %}" role="button">register</a>
             <a class="btn btn-primary me-5" href="{% url 'Login' %}" role="button">login</a>
+            {% endif %}
+
         </div>
     </div>
 </nav>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from uuid import uuid1
 # Create your models here.
 
 
@@ -16,6 +17,8 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='images',blank=True,null=True)
+
+
     
     class Meta:
         unique_together = ('slug', 'author',)

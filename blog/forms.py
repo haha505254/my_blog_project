@@ -1,6 +1,8 @@
 from django import forms
+from blog.models import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
 class RegisterForm(UserCreationForm):
     username = forms.CharField(
         label="帳號",
@@ -31,3 +33,9 @@ class LoginForm(forms.Form):
         label="密碼",
         widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title','slug' ,'body', 'image')
