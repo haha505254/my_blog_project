@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm, Textarea,TextInput
 from blog.models import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -39,3 +40,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title','slug' ,'body')
+        widgets = {
+            'title': TextInput(attrs={'class': 'form-control'}),
+            'slug': TextInput(attrs={'class': 'form-control'}),
+            'body': Textarea(attrs={'class': 'form-control'}),
+            
+        }
