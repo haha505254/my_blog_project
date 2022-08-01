@@ -9,9 +9,9 @@ from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 # Create your views here.
 
-@login_required
+
 def index(request):
-    posts = Post.objects.filter(author=request.user)
+    posts = Post.objects.all()
     limit = 4
     paginator = Paginator(posts, limit)  # 实例化一个分页对象
 
@@ -57,7 +57,7 @@ def log_out(request):
     logout(request)
     return redirect('Login') #重新導向到登入畫面
 
-
+@login_required
 def addpost(request):
     form = PostForm()
     if request.method == "POST":

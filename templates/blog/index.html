@@ -26,30 +26,34 @@
                 <div class="card" style="width: 16rem;">
 
 
-                    {% if post.image %}
-                    <img src="{{ post.image.url}}" class="card-img-top img-fluid" alt="...">
-                    {% else %}
-                    <img src="https://picsum.photos/200/300" class="card-img-top img-fluid" alt="...">
-                    {% endif %}
+                    <!-- {% if post.image %} -->
+                    <!-- <img src="{{ post.image.url}}" class="card-img-top img-fluid" alt="..."> -->
+                    <!-- {% else %} -->
+                    <!-- <img src="https://picsum.photos/200/300" class="card-img-top img-fluid" alt="..."> -->
+                    <!-- {% endif %} -->
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.body }}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">{{ post.body|truncatechars:30 }}</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
                 </div>
             </div>
             {% endfor %}
 
-            <p>
-                
-                {% for page_number in posts.paginator.page_range %}
-                  {% if page_number == posts.number %}
-                    {{ page_number }}
-                  {% else %}
-                    <a href="?page={{ page_number }}">{{ page_number }}</a>
+            <div>
+                <span>
+                  {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">Previous</a>
                   {% endif %}
-                {% endfor %}
-              </p>
+                  <span>
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                  </span>
+                  {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">Next</a>
+                  {% endif %}
+                </span>
+              </div>
+          
               
 
         </div>

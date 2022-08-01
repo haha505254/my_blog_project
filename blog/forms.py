@@ -38,4 +38,4 @@ class LoginForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','slug' ,'body', 'image')
+        fields = ('title','slug' ,'body')

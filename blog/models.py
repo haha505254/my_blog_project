@@ -16,7 +16,7 @@ class Post(models.Model):
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='images',blank=True,null=True)
+    # image = models.ImageField(upload_to='images',blank=True,null=True)
 
 
     
