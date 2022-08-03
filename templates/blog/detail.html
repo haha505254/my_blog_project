@@ -36,9 +36,8 @@
             </div>
         </div>
         {% if user.get_username|stringformat:'s' == post.author|stringformat:'s' %}
-        <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-        {% else %}
-        <p>Welcome, new user. Please log in. {{ user.get_username }} {{ post.author }}</p>
+        <a href="">修改</a>
+        <a href="">刪除</a>
         {% endif %}
 
     </div>
