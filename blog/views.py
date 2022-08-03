@@ -73,3 +73,20 @@ def addpost(request):
         'form': form
     }
     return render(request, 'blog/addpost.html', context)
+
+
+
+def post_detail(request,slug):
+    post =  Post.objects.filter(
+        slug=slug
+    ).first()
+    if request.user==post.author:
+        return render(request,'blog/detail.html',locals())
+    else:
+
+    
+    
+        # List of active comments for this post
+
+
+        return render(request,'blog/detail.html',locals())

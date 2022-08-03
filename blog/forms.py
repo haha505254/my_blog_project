@@ -39,10 +39,9 @@ class LoginForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','slug' ,'body')
+        fields = ('title','body')
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
-            'slug': TextInput(attrs={'class': 'form-control'}),
             'body': Textarea(attrs={'class': 'form-control'}),
             
         }

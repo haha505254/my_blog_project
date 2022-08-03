@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from uuid import uuid1
+from django.urls import reverse
 # Create your models here.
 
 
@@ -8,7 +9,7 @@ class Post(models.Model):
 
 
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(max_length=250,default=uuid1,unique=True)
                           
     author = models.ForeignKey(
         User,
@@ -20,8 +21,15 @@ class Post(models.Model):
 
 
     
-    class Meta:
-        unique_together = ('slug', 'author',)
+
     
     def __str__(self):
         return self.title
+
+    def get_url(self):
+        return reverse(
+            'post_detail',
+            args=[
+                self.slug,
+            ]
+        )
